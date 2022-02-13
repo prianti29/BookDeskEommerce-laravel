@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +21,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-
-Route::get('/admin/dashboard',[DashboardController::class, 'index']);
-__DIR__.'/auth.php';
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+require __DIR__.'/auth.php';
