@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-require __DIR__.'/auth.php';
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/categories', [DashboardController::class, 'index']);
+    Route::get('/products', [DashboardController::class, 'index']);
+});
+require __DIR__ . '/auth.php';
