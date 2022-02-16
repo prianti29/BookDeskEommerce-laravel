@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>SixteenClothingAdmin | Blank Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -169,8 +169,9 @@
         <a href="#" class="brand-link">
             <img src="{{ asset ("/admin/dist/img/AdminLTELogo.png" ) }}" alt="AdminLTE Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Sixteen Clothing</span>
         </a>
+
 
         <!-- Sidebar -->
         <div class="sidebar">

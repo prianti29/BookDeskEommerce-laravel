@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CakeAdmin | Log in</title>
+    <title>SixteenClothingAdmin | Log in</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="admin/index2.html"><b>Cake</b>Admin</a>
+            <a href="admin/index2.html"><b>SixteenClothing</b>Admin</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -39,7 +39,6 @@
                     @error('email')
                     <p style="color: red">{{ $message }}</p>
                     @enderror
-
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-append">
