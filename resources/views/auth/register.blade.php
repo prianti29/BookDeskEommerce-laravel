@@ -29,8 +29,8 @@
                     @csrf
                     {{-- Name --}}
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" 
-                            placeholder="Enter Your Name" name="name" value="{{ old('name')}}">
+                        <input type="text" class="form-control" placeholder="Enter Your Name" name="name"
+                            value="{{ old('name')}}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -68,7 +68,7 @@
                     <p style="color: red">{{ $message }}</p>
                     @enderror
 
-                    
+
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" placeholder="Confirm Password"
                             name="password_confirmation">
