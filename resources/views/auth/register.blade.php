@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SixteenClothingAdmin| Registration Page</title>
+    <title>EliteAdmin| Registration Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="/admin/index2.html"><b>SixteenClothing</b>Admin</a>
+            <a href="/admin/index2.html"><b>EliteShoppy</b>Admin</a>
         </div>
         <div class="card">
             <div class="card-body register-card-body">
