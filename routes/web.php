@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Middleware\OnlyAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('site.home');
 });
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/categories', [DashboardController::class, 'index']);
     Route::get('/products', [DashboardController::class, 'index']);
