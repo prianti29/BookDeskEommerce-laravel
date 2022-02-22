@@ -16,21 +16,21 @@
 <div class="card">
 
     <div class="card-header">
-        <h3 class="card-title">Category List</h3>
+        <h3 class="card-title">Update Category</h3>
         <div class="card-tools">
-   
         </div>
     </div>
     <div class="card-body">
         <div class="card-header">
-            <form method="POST" action="{{ route('categories.store') }}">
+            <form method="POST" action="{{ url("/admin/categories/$category->id") }}">
                 @csrf
+                @method("PUT")
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Main Category</label>
                         <select name="main_category_id" class="form-control">
                             @foreach ($main_category as $key => $item)
-                            <option value="{{ $key }}" {{ old('main_category_id') == strval($key) ? 'selected' : '' }}>
+                            <option value="{{ $key }}" {{ $category->main_category_id == strval($key) ? 'selected' : '' }}>
                                 {{ $item }}</option>
                             @endforeach
                         </select>
@@ -39,14 +39,14 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Catgory Name</label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control"
+                        <input type="text" name="name" value="{{ $category->name }}" class="form-control"
                             placeholder="Enter Category Name">
                     </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
 

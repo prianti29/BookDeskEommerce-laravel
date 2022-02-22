@@ -8,6 +8,7 @@ use App\Enums\MainCategory;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class CategoryController extends Controller
@@ -19,7 +20,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $data["category_list"] = category::get();
+        //dd($data);
+        return view('admin.categories.index', $data);
     }
 
     /**
@@ -68,9 +71,15 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $category = category::find($id);
+        if (!$category) {
+            return redirect('/admin/categories');
+        }
+        $data["category"] = $category;
+        $data["main_category"] = MainCategory::asSelectArray();
+        return view('admin.categories.edit', $data);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -78,11 +87,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    // public function update(CategoryRequest $request, $id)
+    // {
+    //     $category = category::UpdateCategory($id);
+      
+    //     if (!$category) {
+    //         return redirect('/categories');
+    //     }
+    //     $category->name = $request->category_name;
+    //     $category->save();
+    //     return redirect('admin/categories');
+    // }
     /**
      * Remove the specified resource from storage.
      *
@@ -91,6 +106,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = category::find($id);
+        if (!$category) {
+            return redirect('/admin/categories');
+        }
+        $category->delete();
+        return redirect('/admin/categories');
     }
 }
