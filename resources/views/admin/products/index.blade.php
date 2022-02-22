@@ -14,17 +14,13 @@
 @endsection
 @section('content')
 <div class="card">
-
     <div class="card-header">
         <h3 class="card-title">Product List</h3>
         <div class="card-tools">
-         
             <a class="btn btn-success pull-right" href="{{ url('/admin/products/create') }}">Add New Product</a>
-
         </div>
     </div>
     <div class="card-body">
-       
     </div>
     <!-- /.card-body -->
     <div class="card-footer">

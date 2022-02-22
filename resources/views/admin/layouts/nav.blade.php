@@ -10,7 +10,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ url('/admin/products') }}" class="nav-link {{ request()->is('*/product*') ? 'active' : '' }}">
+            <a href="{{ url('admin/products') }}" 
+                class="nav-link {{ request()->is('*/products*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-desktop"></i>
                 <p>Product</p>
             </a>
