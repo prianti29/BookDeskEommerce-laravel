@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Http\Controllers\Controller;
-use App\Enums\MainCategory;
-use App\Http\Requests\CategoryRequest;
-use App\Models\Category;
 use App\Interfaces\ICategoryRepository;
+use App\Interfaces\IProductRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
-    protected $categoryRepo;
+    protected $productRepo;
+    //protected $categoryRepo;
 
-    public function __construct(ICategoryRepository $categoryRepo)
+    public function __construct(IProductRepository $productRepo, ICategoryRepository $categoryRepo)
     {
-        $this->categoryRepo = $categoryRepo;
+        $this->productRepo = $productRepo;
+        //$this->categoryRepo = $categoryRepo;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +25,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data["category_list"] = $this->categoryRepo->get();
-
-        return view('admin.categories.index', $data);
+        return view("admin.products.index");
     }
 
     /**
@@ -39,8 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data["main_category"] = MainCategory::asSelectArray();
-        return view('admin.categories.create', $data);
+        //
     }
 
     /**
@@ -49,11 +44,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        $this->categoryRepo->CreateCategory($request);
-        return redirect('/admin/categories');
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -64,6 +59,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,16 +68,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        
-        $category = $this->categoryRepo->find($id);
-        if (!$category) {
-           
-            return redirect('/admin/categories');
-        }
-        $data["category"] = $category;
-        $data["main_category"] = MainCategory::asSelectArray();
-        return view('admin.categories.edit', $data);
+        //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -89,11 +78,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $status = $this->categoryRepo->UpdateCategory($request, $id);
-        return redirect('/admin/categories');
+        //
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -102,7 +91,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $this->categoryRepo->delete($id);
-        return redirect('/admin/categories');
+        //
     }
 }
