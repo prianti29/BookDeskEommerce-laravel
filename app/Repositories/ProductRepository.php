@@ -7,6 +7,7 @@ use App\Interfaces\IImageRepository;
 use App\Interfaces\IProductRepository;
 use App\Models\Product;
 use App\Models\Image;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Foreach_;
 
 class ProductRepository extends BaseRepository implements IProductRepository
@@ -59,15 +60,13 @@ class ProductRepository extends BaseRepository implements IProductRepository
     }
     public function GetMensProductsList()
     {   
-        $data["category_list"] = $this->categoryRepo->GetCategoryListWithProducts();
-       // dd($data);
-        foreach($data as $item){
-            dd($item->products());
-            foreach ($item->products() as $p)
-            {
-                //dd($product);
-            }
-        }
+        $product = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('categories.main_category_id', 0)
+        ->get()->toArray();
+        return $product;
+        //dd($product);
+        // select * from products p INNER JOIN categories c on c.id = p.category_id and c.main_category_id = 0;
     }
     public function GetWomensProductList()
     {   
