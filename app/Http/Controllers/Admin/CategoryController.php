@@ -27,11 +27,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data["category_list"] = $this->categoryRepo->get();
-
+        $data["category_list"] = $this->categoryRepo->GetCategoryListWithProducts();
+        // dd($data);
         return view('admin.categories.index', $data);
     }
-
     /**
      * Show the form for creating a new resource.
      *

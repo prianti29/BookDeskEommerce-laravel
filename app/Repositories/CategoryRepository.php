@@ -28,4 +28,9 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository
         flash('Successfully Updated')->success();
         return true;
     }
+    public function GetCategoryListWithProducts()
+    {
+        return $this->model->with("products")->get();   
+      
+    }
 }

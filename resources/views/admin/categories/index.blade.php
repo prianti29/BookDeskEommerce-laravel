@@ -32,11 +32,11 @@
             <tr>
                 <td>{{ $item->name }}</td>
                 <td>{{ App\Enums\MainCategory::getDescription($item->main_category_id) }}</td>
-                {{-- <td>
+                <td>
                     @foreach ($item->products() as $p)
                     {{ $p->name }}
                     @endforeach
-                </td>   --}}
+                </td>  
                 <td>
                     <a href="{{ url("/admin/categories/$item->id/edit") }}" class="btn btn-info">Edit</a>
                     {{-- <a href="{{ route('categories.edit', ['category'=>$item->id]) }}" class="btn btn-info">Edit</a>
