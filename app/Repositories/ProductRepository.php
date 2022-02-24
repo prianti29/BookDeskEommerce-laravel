@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Foreach_;
+use Illuminate\Support\Facades\Storage;
 
 class ProductRepository extends BaseRepository implements IProductRepository
 {
@@ -21,7 +22,7 @@ class ProductRepository extends BaseRepository implements IProductRepository
     //     $this->categoryRepo = $categoryRepo;
     // }
 
-    public function __construct(Product $model ,ICategoryRepository $categoryRepo)
+    public function __construct(Product $model, ICategoryRepository $categoryRepo)
     {
         parent::__construct($model);
         $this->categoryRepo = $categoryRepo;
@@ -51,7 +52,7 @@ class ProductRepository extends BaseRepository implements IProductRepository
                     $image->product_id = $product->id;
                     $image->save();
                 }
-            } 
+            }
 
             flash('Successfully Added')->success();
         } catch (\Throwable $th) {
@@ -59,23 +60,27 @@ class ProductRepository extends BaseRepository implements IProductRepository
         }
     }
     public function GetMensProductsList()
-    {   
+    {
         $product = DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->where('categories.main_category_id', 0)
-        ->get()->toArray();
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->where('categories.main_category_id', 0)
+            ->get()->toArray();
         return $product;
         //dd($product);
         // select * from products p INNER JOIN categories c on c.id = p.category_id and c.main_category_id = 0;
     }
     public function GetWomensProductList()
-    {   
+    {
+        $product = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->where('categories.main_category_id', 1)
+            ->get()->toArray();
+        return $product;
     }
     public function GetBegProductList()
-    {   
+    {
     }
     public function GetFootwareProductList()
-    {   
+    {
     }
-   
 }
