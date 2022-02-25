@@ -2,7 +2,19 @@
 <div class="header" id="home">
     <div class="container">
         <ul>
+            {{-- <form method="POST" action="{{ route('auth.login') }}">
+            @csrf
             <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt"
+                        aria-hidden="true"></i> Sign In </a></li>
+            </form> --}}
+            {{-- <form action="{{ url('/login') }}" method="GET">
+            @csrf
+            <button class="nav-link" type="submit">
+                <i class="fa fa-sign-in"></i>
+            </button>
+            </form> --}}
+
+            <li> <a href="{{ route('login') }}" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt"
                         aria-hidden="true"></i> Sign In </a></li>
             <li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o"
                         aria-hidden="true"></i> Sign Up </a></li>
@@ -31,21 +43,21 @@
         <!-- header-bot -->
         <div class="col-md-4 agileits-social top_content">
             <ul class="social-nav model-3d-0 footer-social w3_agile_social">
-				@auth
-				<li><a href="#" class="pinterest">
-					<div class="front"><i aria-hidden="true">{{Auth::user()->name}}</i></div>
-					<div class="back"><i class="fa fa-user" aria-hidden="true"></i></div>
-				</a></li>
-				<li>
+                @auth
+                <li><a href="#" class="pinterest">
+                        <div class="front"><i aria-hidden="true">{{Auth::user()->name}}</i></div>
+                        <div class="back"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    </a></li>
+                <li>
                     <form action="{{ url('/logout') }}" method="POST">
                         @csrf
                         <button class="nav-link" type="submit">
                             <i class="fa fa-sign-out"></i>
                         </button>
                     </form>
-				</li>
-				@endauth
-              
+                </li>
+                @endauth
+
                 <li class="share">Share On : </li>
                 <li><a href="#" class="facebook">
                         <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -188,7 +200,6 @@
                     <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
                             aria-hidden="true"></i></button>
                 </form>
-
             </div>
         </div>
         <div class="clearfix"></div>

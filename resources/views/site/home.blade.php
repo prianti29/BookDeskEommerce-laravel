@@ -205,18 +205,11 @@
                     <div class="col-md-3 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="{{storage_path().'/app/public/product_images/dUGwcy5qYIm3IGB1GUPcTzeuUjWGNnJIkdzoUty8.jpg'}}"
-                                    alt="" class="pro-image-front" />
-                                {{-- <img src="{{ asset("storage/app/public/product_images/dUGwcy5qYIm3IGB1GUPcTzeuUjWGNnJIkdzoUty8.jpg") }}"
-                                alt="" class="pro-image-back" />--}}
-
-                                {{-- <div class="men-cart-pro"> 
-                                    <div class="inner-men-cart-pro">
-                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                    </div>
-                                </div> --}}
+                                <img src="{{asset("storage/$product->featured_image")}}" alt=""
+                                    class="pro-image-front" />
+                                <img src="{{asset("storage/$product->featured_image")}}" alt=""
+                                    class="pro-image-back" />
                                 <span class="product-new-top">New</span>
-
                             </div>
                             <div class="item-info-product ">
                                 <h4><a href="single.html">{{ $product->name }}</a></h4>
@@ -226,30 +219,10 @@
                                     <del> {{ $product->price }}</del>
                                     @endif
                                 </div>
-                                <div
-                                    class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post">
-                                        <fieldset>
-
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Formal Blue Shirt" />
-                                            <input type="hidden" name="amount" value="30.99" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-
-                                            {{-- <a href="{{ url("/add_product/$product->id")  }}"
-                                            class=" single-item hvr-outline-out button2">Add to cart</a> --}}
-
-
-                                        </fieldset>
-                                    </form>
+                                <div> 
+                                     <a href="{{ url("/add_product/$product->id")  }}"  > Add to cart </a>
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -268,11 +241,7 @@
                                     class="pro-image-front">
                                 <img src="{{ asset("storage/$product->featured_image") }}" alt=""
                                     class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                    </div>
-                                </div>
+
                                 <span class="product-new-top">New</span>
                             </div>
                             <div class="item-info-product ">

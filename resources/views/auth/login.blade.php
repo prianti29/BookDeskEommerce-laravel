@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="admin/index2.html"><b>EliteShoppy</b>Admin</a>
+            <a href="admin/index2.html"><b>EliteShoppy</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

@@ -5549,4 +5549,8 @@ p.w3ls_para {
       left: 68% !important;
     }
 }
+.xyz{
+	z-index: -2;
+}
+
 /*-- //responsive media queries --*/
