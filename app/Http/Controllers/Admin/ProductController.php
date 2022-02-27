@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
- 
+        //$data["product_list"]= $this->productRepo->get();
         return view("admin.products.index");
     }
 

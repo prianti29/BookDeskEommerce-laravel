@@ -9,12 +9,10 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     protected $productRepo;
-
     public function __construct(IProductRepository $productRepo)
     {
         $this->productRepo = $productRepo;
     }
-
     public function add_product($product_id)
     {
         $product = $this->productRepo->find($product_id);
@@ -23,7 +21,7 @@ class CartController extends Controller
             \Cart::add(array(
                 'id' => $product->id,
                 'name' => $product->name,
-                'price' => $product->price_after_discount,
+                //'price' => $product->price_after_discount,
                 'quantity' => 1, 
             )); 
             return redirect("/");
@@ -31,13 +29,13 @@ class CartController extends Controller
             return redirect("/"); 
         }
     }
-    public function checkout() 
-    {
-       
-        $cartCollection = \Cart::getContent();
-        dd($cartCollection);
-        $data["$cartCollection"] =   $cartCollection;
-        return view('site.cart.checkout',$data);
-       // dd($cartCollection);
+        public function checkout() 
+        {  
+            $cartCollection = \Cart::getContent(); 
+            dd($cartCollection);
+            $data["cartCollection"] =  $cartCollection; 
+            return view('site.cart.checkout', $data);  
+        }
+   
     }
-}
+

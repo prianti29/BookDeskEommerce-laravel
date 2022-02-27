@@ -17,15 +17,11 @@ class ProductRepository extends BaseRepository implements IProductRepository
 
     protected $categoryRepo;
 
-    // public function __construct(ICategoryRepository $categoryRepo)
-    // {
-    //     $this->categoryRepo = $categoryRepo;
-    // }
 
-    public function __construct(Product $model, ICategoryRepository $categoryRepo)
+
+    public function __construct(Product $model)
     {
         parent::__construct($model);
-        $this->categoryRepo = $categoryRepo;
     }
     public function CreateProduct($request)
     {
@@ -66,8 +62,7 @@ class ProductRepository extends BaseRepository implements IProductRepository
             ->where('categories.main_category_id', 0)
             ->get()->toArray();
         return $product;
-        //dd($product);
-        // select * from products p INNER JOIN categories c on c.id = p.category_id and c.main_category_id = 0;
+        
     }
     public function GetWomensProductList()
     {

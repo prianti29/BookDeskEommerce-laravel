@@ -20,6 +20,10 @@ class CategoryController extends Controller
     {
         $this->categoryRepo = $categoryRepo;
     }
+
+
+
+    
     /**
      * Display a listing of the resource.
      *
