@@ -2,22 +2,26 @@
 <div class="header" id="home">
     <div class="container">
         <ul>
-            {{-- <form method="POST" action="{{ route('auth.login') }}">
-            @csrf
-            <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt"
+            <li>
+                <form action="{{ url('/login') }}" method="GET">
+                    @csrf
+                    <button class="nav-link" type="submit" style="background-color: black">
+                        {{-- <i class="fa fa-sign-out"></i> --}}
+                        <i class="fa fa-unlock-alt " 
                         aria-hidden="true"></i> Sign In </a></li>
-            </form> --}}
-            {{-- <form action="{{ url('/login') }}" method="GET">
-            @csrf
-            <button class="nav-link" type="submit">
-                <i class="fa fa-sign-in"></i>
-            </button>
-            </form> --}}
-
-            <li> <a href="{{ route('login') }}" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt"
-                        aria-hidden="true"></i> Sign In </a></li>
-            <li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o"
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="{{ url('/register') }}" method="GET">
+                    @csrf
+                    <button class="nav-link" type="submit" style="background-color: black">
+                        {{-- <i class="fa fa-sign-out"></i> --}}
+                        <i class="fa fa-pencil-square-o"
                         aria-hidden="true"></i> Sign Up </a></li>
+                    </button>
+                </form>
+            </li>
             <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
             <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a
                     href="mailto:info@example.com">info@example.com</a></li>
@@ -75,9 +79,6 @@
                         <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
                         <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
                     </a></li>
-
-
-
             </ul>
         </div>
         <div class="clearfix"></div>

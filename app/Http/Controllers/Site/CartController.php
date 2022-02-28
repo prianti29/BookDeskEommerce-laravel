@@ -16,7 +16,7 @@ class CartController extends Controller
     public function add_product($product_id)
     {
         $product = $this->productRepo->find($product_id);
-       // dd($product);
+        //dd($product);
         if ($product) {
             \Cart::add(array(
                 'id' => $product->id,
