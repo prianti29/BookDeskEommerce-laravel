@@ -18,13 +18,13 @@ class CartController extends Controller
         $product = $this->productRepo->find($product_id);
         //dd($product);
         if ($product) {
-            \Cart::add(array(
+            \Cart::add(array(  
                 'id' => $product->id,
                 'name' => $product->name,
-                //'price' => $product->price_after_discount,
+                'price' => $product->price,  
                 'quantity' => 1, 
             )); 
-            return redirect("/");
+            return redirect("/checkout");
         } else {
             return redirect("/"); 
         }
@@ -32,7 +32,7 @@ class CartController extends Controller
         public function checkout() 
         {  
             $cartCollection = \Cart::getContent(); 
-            dd($cartCollection);
+           // dd($cartCollection);
             $data["cartCollection"] =  $cartCollection; 
             return view('site.cart.checkout', $data);  
         }

@@ -57,19 +57,31 @@ class ProductRepository extends BaseRepository implements IProductRepository
     }
     public function GetMensProductsList()
     {
-        $product = DB::table('products')
-            ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->where('categories.main_category_id', 0)
+        // $product = DB::table('products')
+        //     ->join('categories', 'categories.id', '=', 'products.category_id')
+        //     ->where('categories.main_category_id', 0)
+        //     ->get()->toArray();
+        // return $product;
+        $product = DB::table('products as p')
+            ->select('p.id', 'p.name', 'p.price', 'p.discount_amount', 'p.featured_image', 'p.stock', 'p.description', 'p.category_id')
+            ->join('categories as c', 'c.id', '=', 'p.category_id')
+            ->where('c.main_category_id', 0)
             ->get()->toArray();
-        return $product;
+            return $product;
         
     }
     public function GetWomensProductList()
     {
-        $product = DB::table('products')
-            ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->where('categories.main_category_id', 1)
-            ->get()->toArray();
+        // $product = DB::table('products')
+        //     ->join('categories', 'categories.id', '=', 'products.category_id')
+        //     ->where('categories.main_category_id', 1)
+        //     ->get()->toArray();
+        // return $product;
+        $product = DB::table('products as p')
+        ->select('p.id', 'p.name', 'p.price', 'p.discount_amount', 'p.featured_image', 'p.stock', 'p.description', 'p.category_id')
+        ->join('categories as c', 'c.id', '=', 'p.category_id')
+        ->where('c.main_category_id', 1)
+        ->get()->toArray();
         return $product;
     }
     public function GetBegProductList()
