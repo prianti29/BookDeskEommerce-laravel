@@ -38,10 +38,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         rel='stylesheet' type='text/css'>
     <script src="site/cart/js1/jquery.easing.min.js"></script>
 </head>
-
-
-
-
 @section('content')
 
 <div class="checkout">
@@ -60,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </thead>
                 @foreach ($cartCollection as $cart)
                 <tr class="rem1">
-                    <td class="invert-closeb">
+                    {{-- <td class="invert-closeb">
                         <div class="rem">
                             <div class="close1"> </div>
                         </div>
@@ -72,8 +68,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									});	  
 								});
 						   </script>
-                    </td>
-                    <td class="invert-image"><a href="single.html"><img src="site/cart/images1/w4.png" alt=" "
+                    </td> --}}
+                    <td class="invert-image"><a href="single.html"><img src="{{asset("storage/$cart->featured_image")}}"  alt=" "
                       class="img-responsive" /></a></td>
                     <td class="invert">
                         <div class="quantity">

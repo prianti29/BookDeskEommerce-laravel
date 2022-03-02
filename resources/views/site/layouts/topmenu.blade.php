@@ -195,11 +195,13 @@
         </div>
         <div class="top_nav_right">
             <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart">
-                    <input type="hidden" name="display" value="1">
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
+                <form action="{{ url('/checkout') }}" method="get" class="last">
+                    {{-- <input type="hidden" name="cmd" value="_cart">
+                    <input type="hidden" name="display" value="1"> --}}
+                    <button class="w3view" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" 
                             aria-hidden="true"></i></button>
+                            {{-- <i class="fa fa-cart-arrow-down"
+                            aria-hidden="true"></i> --}}
                 </form>
             </div>
         </div>
