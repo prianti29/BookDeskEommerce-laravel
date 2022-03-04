@@ -3,8 +3,7 @@
 <html>
 
 <head>
-    <title>Smart Shop a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Check Out ::
-        w3layouts</title>
+    <title>Elite_Shoppy</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <table class="timetable_sub">
                 <thead>
                     <tr>
-                        {{-- <th>Remove</th> --}}
+                        <th>Remove</th>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Product Name</th>
@@ -56,73 +55,93 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </thead>
                 @foreach ($cartCollection as $cart)
                 <tr class="rem1">
-                    {{-- <td class="invert-closeb">
+                    <td class="invert-closeb">
+                        <a href="{{ url("cart/remove/$cart->id") }}"><i class='fa fa-remove'></i></a>
                         <div class="rem">
                             <div class="close1"> </div>
                         </div>
-                        <script>$(document).ready(function(c) { 
+                        {{-- <script>$(document).ready(function(c) { 
 								$('.close1').on('click', function(c){
 									$('.rem1').fadeOut('slow', function(c){
 										$('.rem1').remove();
 									});
 									});	  
 								});
-						   </script>
-                    </td> --}}
-                    <td class="invert-image"><a href="single.html"><img src="{{asset("storage/$cart->featured_image")}}"  alt=" "
-                      class="img-responsive" /></a></td>
-                    <td class="invert">
-                        <div class="quantity">
-                            <div class="quantity-select">
-                                <div class="entry value-minus">&nbsp;</div>
-                                <div class="entry value"><span>{{ $cart->quantity }}</span></div>
-                                <div class="entry value-plus active">&nbsp;</div>
-                            </div>
-                        </div>
+						   </script> --}}
                     </td>
-                    <td class="invert">{{ $cart->name }}</td>
-                    <td class="invert">{{ $cart->price }}</td>
-                </tr>
-                @endforeach
+                    <td class="invert-image"><a href="single.html"><img style="height:50px;width=10px"
+                                src="{{asset("storage/".$cart->attributes->featured_image)}}" alt=" "
+                                class="img-responsive" "/></a></td>
+                    <td class=" invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    {{-- <a href="{{ url("cart/remove_one_product/$cart->id") }}"
+                                        style="width:50px;height:15px">
+                                        <div class="entry value-minus">&nbsp;</div>
+                                    </a> --}}
+                                    <div class="entry value-minus">&nbsp;</div>
 
-                <!--quantity-->
-                <script>
-                    $('.value-plus').on('click', function () {
-                        var divUpd = $(this).parent().find('.value'),
-                            newVal = parseInt(divUpd.text(), 10) + 1;
-                        divUpd.text(newVal);
-                    });
+                                    {{-- <div class="entry value"> --}}
+                                    <div class="">
+                                        <span>
+                                            {{-- <div class="entry value"><span>{{ $cart->quantity }}</span></div> --}}
+                                    <form action="{{ url("/cart/update_product/$cart->id") }}" method="POST">
+                                        @csrf
+                                        <input type="number" name="cart_value" id="cart_value" style="width:42px;"
+                                            value="{{ $cart->quantity }}">
+                                    </form>
+                                    </span>
+                                </div>
+                                <a href="{{ url("cart/add_one_product/$cart->id") }}">
+                                    <div class="entry value-plus active">&nbsp;</div>
+                                </a>
 
-                    $('.value-minus').on('click', function () {
-                        var divUpd = $(this).parent().find('.value'),
-                            newVal = parseInt(divUpd.text(), 10) - 1;
-                        if (newVal >= 1) divUpd.text(newVal);
-                    });
-
-                </script>
-                <!--quantity-->
-            </table>
+                            </div>
         </div>
+        </td>
+        <td class="invert">{{ $cart->name }}</td>
+        <td class="invert">{{ $cart->price }}</td>
+        </tr>
+        @endforeach
 
-        {{-- <div class="checkout-left">
-            <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-                <a href="mens.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back To
-                    Shopping</a>
-            </div>
-            <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-                <h4>Shopping basket</h4>
-                <ul>
-                    <li>Hand Bag <i>-</i> <span>$45.99</span></li>
-                    <li>Watches <i>-</i> <span>$45.99</span></li>
-                    <li>Sandals <i>-</i> <span>$45.99</span></li>
-                    <li>Wedges <i>-</i> <span>$45.99</span></li>
-                    <li>Total <i>-</i> <span>$183.96</span></li>
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div> --}}
+        <!--quantity-->
+        <script>
+            $('.value-plus').on('click', function () {
+                var divUpd = $(this).parent().find('.value'),
+                    newVal = parseInt(divUpd.text(), 10) + 1;
+                divUpd.text(newVal);
+            });
+
+            $('.value-minus').on('click', function () {
+                var divUpd = $(this).parent().find('.value'),
+                    newVal = parseInt(divUpd.text(), 10) - 1;
+                if (newVal >= 1) divUpd.text(newVal);
+            });
+
+        </script>
+        <!--quantity-->
+        </table>
     </div>
+</div>
 </div>
 @endsection
 
 <!-- check out -->
+
+@push('scripts')
+{{-- <script>
+    $('#cart_value').bind('keyup', function () {
+        $('#form').submit();
+    });
+</script> --}}
+<script>
+    // $(".value-minus").click(function () {
+    //     $.ajax({
+    //         url: "demo_test.txt",
+    //         success: function (result) {
+    //             $("#div1").html(result);
+    //         }
+    //     });
+    // });
+</script>
+@endpush

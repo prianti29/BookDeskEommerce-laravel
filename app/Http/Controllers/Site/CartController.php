@@ -21,10 +21,13 @@ class CartController extends Controller
             \Cart::add(array(  
                 'id' => $product->id,
                 'name' => $product->name,
-                'price' => $product->price,  
-                'quantity' => 1, 
+                'price' => $product->price - $product->discount_amount,  
+                'quantity' => 1,
+                'attributes' => array(
+                    'featured_image' =>$product->featured_image
+                  )
             )); 
-            return redirect("/checkout");
+            return redirect("/");
         } else {
             return redirect("/"); 
         }
@@ -36,6 +39,45 @@ class CartController extends Controller
             $data["cartCollection"] =  $cartCollection; 
             return view('site.cart.checkout', $data);  
         }
+        public function remove_product($id){
+            \Cart::remove($id);
+            return redirect("/checkout");
+        }
+        public function remove_one_product($id){
+            $product = \Cart::get($id);
+            if($product->quantity==1){
+                \Cart::remove($id);
+            }
+            else{
+                \Cart::update($id, array(
+                    'quantity' => -1,
+                  ));
+            }
+              return redirect("/checkout");
+        }
+        public function update_product($id, Request $request){
+            $original_product= $this->productRepo->fine($id);
+          
+            if($original_product->stock >= $request->cart_value){
+                $product = \Cart::get($id);
+                // dd($product);
+                 $ex_product=$product->quantity;
+                 $new_product=$request->cart_value;   
+                 \Cart::update($id, array(
+                     'quantity' => $new_product-$ex_product,
+                   ));
+            }else{
+                flash('stock Out')->error();
+            }
+              return redirect("/checkout");
+        }
+        public function add_one_product($id){
+            \Cart::update($id, array(
+                'quantity' => 1,
+              ));
+              return redirect("/checkout");
+        }
+   
    
     }
 

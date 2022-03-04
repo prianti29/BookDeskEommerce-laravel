@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/add_product/{id}', [CartController::class, 'add_product']);
+Route::get('/cart/remove/{id}', [CartController::class, 'remove_product']);
+Route::get('/cart/remove_one_product/{id}', [CartController::class, 'remove_one_product']);
+Route::get('/cart/add_one_product/{id}', [CartController::class, 'add_one_product']);
+Route::post('/cart/update_product/{id}', [CartController::class, 'update_product']);
 Route::get('/checkout', [CartController::class, 'checkout']);
 
 Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class])->group(function () {

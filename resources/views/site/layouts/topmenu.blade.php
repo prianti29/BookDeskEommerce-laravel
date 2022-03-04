@@ -7,20 +7,20 @@
                     @csrf
                     <button class="nav-link" type="submit" style="background-color: black">
                         {{-- <i class="fa fa-sign-out"></i> --}}
-                        <i class="fa fa-unlock-alt " 
-                        aria-hidden="true"></i> Sign In </a></li>
-                    </button>
-                </form>
+                        <i class="fa fa-unlock-alt " aria-hidden="true"></i> Sign In </a>
+            </li>
+            </button>
+            </form>
             </li>
             <li>
                 <form action="{{ url('/register') }}" method="GET">
                     @csrf
                     <button class="nav-link" type="submit" style="background-color: black">
                         {{-- <i class="fa fa-sign-out"></i> --}}
-                        <i class="fa fa-pencil-square-o"
-                        aria-hidden="true"></i> Sign Up </a></li>
-                    </button>
-                </form>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a>
+            </li>
+            </button>
+            </form>
             </li>
             <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
             <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a
@@ -105,7 +105,7 @@
                     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav menu__list">
                             <li class="active menu__item menu__item--current"><a class="menu__link"
-                                    href="index.html">Home <span class="sr-only">(current)</span></a></li>
+                                    href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a></li>
                             <li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
                             <li class="dropdown menu__item">
                                 <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button"
@@ -198,9 +198,9 @@
                 <form action="{{ url('/checkout') }}" method="get" class="last">
                     {{-- <input type="hidden" name="cmd" value="_cart">
                     <input type="hidden" name="display" value="1"> --}}
-                    <button class="w3view" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" 
+                    <button class="w3view" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
                             aria-hidden="true"></i></button>
-                            {{-- <i class="fa fa-cart-arrow-down"
+                    {{-- <i class="fa fa-cart-arrow-down"
                             aria-hidden="true"></i> --}}
                 </form>
             </div>
