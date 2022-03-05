@@ -7,6 +7,9 @@ use App\Interfaces\ICategoryRepository;
 use App\Interfaces\IProductRepository;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
+use App\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {
@@ -26,8 +29,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //$data["product_list"]= $this->productRepo->get();
-        return view("admin.products.index");
+        $data["product_list"]= $this->productRepo->get();
+       
+        return view("admin.products.index",$data);
     }
 
     /**
@@ -37,8 +41,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-    
-        $data["categories"]= $this->categoryRepo->get();
+        $data["categories"] = $this->categoryRepo->get();
         return view("admin.products.create", $data);
     }
 
@@ -53,7 +56,6 @@ class ProductController extends Controller
         $this->productRepo->CreateProduct($request);
         return redirect('/admin/products');
     }
-
     /**
      * Display the specified resource.
      *
@@ -64,7 +66,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -74,8 +75,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-    }
 
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -94,8 +95,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+ 
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $data = $this->productRepo->DeleteProduct($id);
+        //dd( $data );
+        return redirect('/admin/products'); 
     }
 }

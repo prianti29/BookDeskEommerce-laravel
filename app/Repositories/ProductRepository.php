@@ -2,22 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\ICategoryRepository;
-use App\Interfaces\IImageRepository;
 use App\Interfaces\IProductRepository;
 use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\Foreach_;
+
 use Illuminate\Support\Facades\Storage;
 
 class ProductRepository extends BaseRepository implements IProductRepository
 {
     protected $model;
-
     protected $categoryRepo;
-
-
 
     public function __construct(Product $model)
     {
@@ -55,6 +50,35 @@ class ProductRepository extends BaseRepository implements IProductRepository
             flash('Something went wrong ' . $th->getMessage())->error();
         }
     }
+
+    public function DeleteProduct($id)
+    {
+        try {
+            $product = $this->find($id);
+            Storage::disk('public')->delete($product->featured_image);
+            $product->delete();
+            flash('Successfully Deleted')->success();
+          
+        } catch (\Throwable $th) {
+            flash('Something Went Wrong')->error();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function GetMensProductsList()
     {
         // $product = DB::table('products')

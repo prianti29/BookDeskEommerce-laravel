@@ -14,7 +14,6 @@
 @endsection
 @section('content')
 <div class="card">
-
     <div class="card-header">
         <h3 class="card-title">Update Category</h3>
         <div class="card-tools">
@@ -44,12 +43,10 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
-
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

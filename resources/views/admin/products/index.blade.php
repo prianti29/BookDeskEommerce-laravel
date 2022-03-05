@@ -20,8 +20,56 @@
             <a class="btn btn-success pull-right" href="{{ url('/admin/products/create') }}">Add New Product</a>
         </div>
     </div>
+
+
+
+
+{{-- changes --}}
+
     <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Discount Amonunt</td>
+                <td>Stock</td>
+          
+                <td>#</td>
+            </tr>
+            @foreach ($product_list as $item)
+            <tr>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->price }}</td>
+                <td>{{ $item->discount_amount }}</td>
+                <td>{{ $item->stock }}</td>
+               
+                <td>
+
+                    {{-- <a href="{{ url("/admin/products/$item->id/edit") }}" class="btn btn-info">Edit</a> --}}
+                   <form action="{{ url("/admin/products/$item->id") }}" method="post" style="display:inline"
+                        onSubmit="return confirm('Are you sure you want to delete?')">
+                        @csrf
+                        @method("delete")
+                        <input type="submit" class="btn btn-info" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- /.card-body -->
     <div class="card-footer">
     </div>

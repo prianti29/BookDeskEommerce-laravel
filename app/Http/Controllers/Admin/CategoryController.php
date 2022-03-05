@@ -74,17 +74,16 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        
+    {  
         $category = $this->categoryRepo->find($id);
-        if (!$category) {
-           
+        if (!$category) { 
             return redirect('/admin/categories');
         }
         $data["category"] = $category;
         $data["main_category"] = MainCategory::asSelectArray();
         return view('admin.categories.edit', $data);
     }
+    
     /**
      * Update the specified resource in storage.
      *
