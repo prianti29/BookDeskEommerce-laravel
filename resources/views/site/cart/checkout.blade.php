@@ -75,54 +75,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <td class=" invert">
                             <div class="quantity">
                                 <div class="quantity-select">
-                                    {{-- <a href="{{ url("cart/remove_one_product/$cart->id") }}"
+                                    <a href="{{ url("cart/remove_one_product/$cart->id") }}"
                                         style="width:50px;height:15px">
                                         <div class="entry value-minus">&nbsp;</div>
-                                    </a> --}}
-                                    <div class="entry value-minus">&nbsp;</div>
-
-                                    {{-- <div class="entry value"> --}}
+                                    </a>
                                     <div class="">
                                         <span>
-                                            {{-- <div class="entry value"><span>{{ $cart->quantity }}</span></div> --}}
-                                    <form action="{{ url("/cart/update_product/$cart->id") }}" method="POST">
-                                        @csrf
-                                        <input type="number" name="cart_value" id="cart_value" style="width:42px;"
-                                            value="{{ $cart->quantity }}">
-                                    </form>
-                                    </span>
+                                            <form action="{{ url("/cart/update_product/$cart->id") }}" method="POST">
+                                                @csrf
+                                                <input type="number" name="cart_value" id="cart_value"
+                                                    style="width:42px;" value="{{ $cart->quantity }}">
+                                            </form>
+                                        </span>
+                                    </div>
+                                    <a href="{{ url("cart/add_one_product/$cart->id") }}">
+                                        <div class="entry value-plus active">&nbsp;</div>
+                                    </a>
                                 </div>
-                                <a href="{{ url("cart/add_one_product/$cart->id") }}">
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </a>
-
                             </div>
+                    </td>
+                    <td class="invert">{{ $cart->name }}</td>
+                    <td class="invert">{{ $cart->price * $cart->quantity  }}</td>
+                </tr>
+                @endforeach
+                <!--quantity-->
+                <script>
+                    $('.value-plus').on('click', function () {
+                        var divUpd = $(this).parent().find('.value'),
+                            newVal = parseInt(divUpd.text(), 10) + 1;
+                        divUpd.text(newVal);
+                    });
+
+                    $('.value-minus').on('click', function () {
+                        var divUpd = $(this).parent().find('.value'),
+                            newVal = parseInt(divUpd.text(), 10) - 1;
+                        if (newVal >= 1) divUpd.text(newVal);
+                    });
+
+                </script>
+                <!--quantity-->
+            </table>
         </div>
-        </td>
-        <td class="invert">{{ $cart->name }}</td>
-        <td class="invert">{{ $cart->price }}</td>
-        </tr>
-        @endforeach
-
-        <!--quantity-->
-        <script>
-            $('.value-plus').on('click', function () {
-                var divUpd = $(this).parent().find('.value'),
-                    newVal = parseInt(divUpd.text(), 10) + 1;
-                divUpd.text(newVal);
-            });
-
-            $('.value-minus').on('click', function () {
-                var divUpd = $(this).parent().find('.value'),
-                    newVal = parseInt(divUpd.text(), 10) - 1;
-                if (newVal >= 1) divUpd.text(newVal);
-            });
-
-        </script>
-        <!--quantity-->
-        </table>
     </div>
-</div>
 </div>
 @endsection
 
@@ -143,5 +137,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     //         }
     //     });
     // });
+
 </script>
 @endpush

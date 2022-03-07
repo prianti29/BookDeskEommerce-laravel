@@ -20,10 +20,6 @@ class CategoryController extends Controller
     {
         $this->categoryRepo = $categoryRepo;
     }
-
-
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +41,6 @@ class CategoryController extends Controller
         $data["main_category"] = MainCategory::asSelectArray();
         return view('admin.categories.create', $data);
     }
-
     /**
      * Store a newly created resource in storage.
      *

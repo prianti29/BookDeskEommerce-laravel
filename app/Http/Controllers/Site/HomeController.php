@@ -18,11 +18,19 @@ class HomeController extends Controller
     {
         $data["mens_products"]= $this->productRepo->GetMensProductsList();
         $data["womens_product"]= $this->productRepo->GetWomensProductList();
-        $data["Beg_product"]= $this->productRepo->GetBegProductList();
-        $data["footware_product"]= $this->productRepo->GetFootwareProductList();
-      
+        // $data["Beg_product"]= $this->productRepo->GetBegProductList();
+        // $data["footware_product"]= $this->productRepo->GetFootwareProductList();
         return view('site.home', $data);
     }
 
 
+
+    //Single Product
+    public function product($id)
+    {
+        $data["products"]= $this->productRepo->find($id);
+        //dd( $data);
+        return view('site.products.single', $data); 
+       
+    }
 }

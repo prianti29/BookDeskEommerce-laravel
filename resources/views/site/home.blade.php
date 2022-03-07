@@ -176,7 +176,6 @@
         <a href="womens.html"><img src="{{ asset ("site/images/bot_1.jpg" ) }}" alt=" ">
             <h4>Flat <span>50%</span> offer</h4>
         </a>
-
     </div>
     <div class="col-md-6 multi-gd-img multi-gd-text ">
         <a href="womens.html"><img src="{{ asset ("site/images/bot_2.jpg" ) }}" alt=" ">
@@ -206,7 +205,7 @@
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
                                 <img src="{{asset("storage/$product->featured_image")}}" alt=""
-                                    class="pro-image-front" />
+                                    class="pro-image-front" /> 
                                 <img src="{{asset("storage/$product->featured_image")}}" alt=""
                                     class="pro-image-back" />
                                 <span class="product-new-top">New</span>
@@ -260,6 +259,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <!--//tab_two-->
+
+
+
+
+
+                
                 {{-- <div class="tab3">
                     <div class="col-md-3 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">

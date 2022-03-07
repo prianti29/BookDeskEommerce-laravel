@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index']);
+
+//Single Product
+Route::get('/product/{id}', [HomeController::class, 'products']); 
+
+
 Route::get('/add_product/{id}', [CartController::class, 'add_product']);
 Route::get('/cart/remove/{id}', [CartController::class, 'remove_product']);
 Route::get('/cart/remove_one_product/{id}', [CartController::class, 'remove_one_product']);

@@ -13,7 +13,6 @@ class BaseRepository implements IBaseRepository
     {
         $this->model = $model;
     }
-    
     public function get()
     {
         return $this->model->get();

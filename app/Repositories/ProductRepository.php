@@ -44,13 +44,11 @@ class ProductRepository extends BaseRepository implements IProductRepository
                     $image->save();
                 }
             }
-
             flash('Successfully Added')->success();
         } catch (\Throwable $th) {
             flash('Something went wrong ' . $th->getMessage())->error();
         }
     }
-
     public function DeleteProduct($id)
     {
         try {
@@ -58,34 +56,13 @@ class ProductRepository extends BaseRepository implements IProductRepository
             Storage::disk('public')->delete($product->featured_image);
             $product->delete();
             flash('Successfully Deleted')->success();
-          
         } catch (\Throwable $th) {
             flash('Something Went Wrong')->error();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function GetMensProductsList()
     {
-        // $product = DB::table('products')
-        //     ->join('categories', 'categories.id', '=', 'products.category_id')
-        //     ->where('categories.main_category_id', 0)
-        //     ->get()->toArray();
-        // return $product;
+      
         $product = DB::table('products as p')
             ->select('p.id', 'p.name', 'p.price', 'p.discount_amount', 'p.featured_image', 'p.stock', 'p.description', 'p.category_id')
             ->join('categories as c', 'c.id', '=', 'p.category_id')
@@ -96,22 +73,20 @@ class ProductRepository extends BaseRepository implements IProductRepository
     }
     public function GetWomensProductList()
     {
-        // $product = DB::table('products')
-        //     ->join('categories', 'categories.id', '=', 'products.category_id')
-        //     ->where('categories.main_category_id', 1)
-        //     ->get()->toArray();
-        // return $product;
         $product = DB::table('products as p')
         ->select('p.id', 'p.name', 'p.price', 'p.discount_amount', 'p.featured_image', 'p.stock', 'p.description', 'p.category_id')
         ->join('categories as c', 'c.id', '=', 'p.category_id')
         ->where('c.main_category_id', 1)
         ->get()->toArray();
         return $product;
+        
     }
-    public function GetBegProductList()
-    {
-    }
-    public function GetFootwareProductList()
-    {
-    }
+    // public function GetBegProductList()
+    // {
+    //    $data = Product::get();
+    //    //dd($data);
+    // }
+    // public function GetFootwareProductList()
+    // {
+    // }
 }

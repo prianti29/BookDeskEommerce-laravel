@@ -8,8 +8,6 @@ interface IProductRepository extends IBaseRepository
     public function DeleteProduct($id);
     public function GetMensProductsList();
     public function GetWomensProductList();
-    public function GetBegProductList();
-    public function GetFootwareProductList();
-   
-
+    // public function GetBegProductList();
+    // public function GetFootwareProductList();
 }

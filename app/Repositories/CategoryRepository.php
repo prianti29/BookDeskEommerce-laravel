@@ -31,6 +31,5 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository
     public function GetCategoryListWithProducts()
     {
         return $this->model->with("products")->get();   
-      
     }
 }
