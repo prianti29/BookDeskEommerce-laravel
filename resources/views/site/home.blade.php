@@ -204,21 +204,24 @@
                     <div class="col-md-3 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="{{asset("storage/$product->featured_image")}}" alt=""
-                                    class="pro-image-front" /> 
-                                <img src="{{asset("storage/$product->featured_image")}}" alt=""
-                                    class="pro-image-back" />
+                               
+                                    <img src="{{asset("storage/$product->featured_image")}}" alt=""
+                                        class="pro-image-front" />
+                             
+                                 <img src="{{asset("storage/  $product->featured_image")}}" alt=""
+                                class="pro-image-back" />
                                 <span class="product-new-top">New</span>
+
                             </div>
                             <div class="item-info-product ">
-                                <h4><a href="single.html">{{ $product->name }}</a></h4>
+                                <h4><a href="{{ url("/product/$product->id") }}">{{ $product->name }}</a></h4>
                                 <div class="info-product-price">
                                     <span class="item_price">${{ $product->price - $product->discount_amount;}}</span>
                                     @if ($product->discount_amount > 0)
                                     <del> {{ $product->price }}</del>
                                     @endif
                                 </div>
-                                <div>
+                                <div>  
                                     <a href="{{ url("/add_product/$product->id")  }}"> Add to cart </a>
                                 </div>
                             </div>
@@ -250,7 +253,7 @@
                                     @endif
                                 </div>
                                 <div>
-                                    <a href="{{ url("/add_product/$product->id")  }}" > Add to cart </a>
+                                    <a href="{{ url("/add_product/$product->id")  }}"> Add to cart </a>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +267,7 @@
 
 
 
-                
+
                 {{-- <div class="tab3">
                     <div class="col-md-3 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">

@@ -29,12 +29,14 @@
                 <div class="flexslider">
                     {{-- @foreach ($products as $product ) --}}
                     {{-- <p>{{ $products->id}}</p> --}}
-                
+
                     <ul class="slides">
                         <li data-thumb="images/d2.jpg">
-                            <div class="thumb-image"> 
-                                <img src="{{asset("storage/$products->featured_image")}}"
-                                    data-imagezoom="true" class="img-responsive"/> 
+                            <div class="thumb-image">
+                                {{-- <a href="{{ url("/add_product/$product->id")  }}">  </a>  --}}
+                                <img
+                                        src="{{asset("storage/$products->featured_image")}}" data-imagezoom="true"
+                                        class="img-responsive" />
                             </div>
                         </li>
                         {{-- <li data-thumb="images/d1.jpg">
@@ -52,7 +54,7 @@
             </div>
         </div>
         <div class="col-md-8 single-right-left simpleCart_shelfItem">
-            <h3>{{ $products->name }}</h3>  
+            <h3>{{ $products->name }}</h3>
             <p><span class="item_price">{{ $products->price }}</span> <del>{{ $products->discount_amount }}</del></p>
             <div class="rating1">
                 <span class="starRating">
@@ -75,16 +77,16 @@
                         onblur="if (this.value == '') {this.value = 'Enter pincode';}" required="">
                     <input type="submit" value="Check">
                 </form>
-            </div>  
+            </div>
             <div class="color-quality">
                 <div class="color-quality-right">
                     <h5>Quality :</h5>
                     <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                      
+
                         @for ($i = 1; $i <= $products->stock; $i++)
-                        <option value="{{ $i }}">{{ $i }} Qty</option>
-                   @endfor
-                    </select> 
+                            <option value="{{ $i }}">{{ $i }} Qty</option>
+                            @endfor
+                    </select>
                 </div>
             </div>
             <div class="occasional">
