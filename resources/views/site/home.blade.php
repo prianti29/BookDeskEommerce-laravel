@@ -245,7 +245,7 @@
                                 <span class="product-new-top">New</span>
                             </div>
                             <div class="item-info-product ">
-                                <h4><a href="single.html">{{ $product->name }}</a></h4>
+                                <h4><a href="{{ url("/product/$product->id") }}">{{ $product->name }}</a></h4>
                                 <div class="info-product-price">
                                     <span class="item_price">${{ $product->price - $product->discount_amount;}}</span>
                                     @if ($product->discount_amount > 0)

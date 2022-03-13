@@ -103,4 +103,5 @@ class ProductController extends Controller
         //dd( $data );
         return redirect('/admin/products'); 
     }
+    
 }
