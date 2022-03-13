@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Interfaces\IProductRepository;
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -36,7 +36,9 @@ class CartController extends Controller
         {  
             $cartCollection = \Cart::getContent(); 
            // dd($cartCollection);
-            $data["cartCollection"] =  $cartCollection; 
+            $data["cartCollection"] =  $cartCollection;
+            $data["category_list_men"] = Category::where('main_category_id', 0)->get();
+            $data["category_list_women"] = Category::where('main_category_id', 1)->get(); 
             return view('site.cart.checkout', $data);  
         }
         public function remove_product($id){

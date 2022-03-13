@@ -112,7 +112,7 @@
             <div class="col-md-4 w3l_schedule_bottom_right_grid1">
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>
                 <h4>Events</h4>
-                <h5 class="counter">823</h5>
+                <h5 class="counter">823</h5>  
             </div>
             <div class="col-md-4 w3l_schedule_bottom_right_grid1">
                 <i class="fa fa-shield" aria-hidden="true"></i>
@@ -185,15 +185,15 @@
     <div class="clearfix"></div>
 </div>
 <!--/grids-->
-<!-- /new_arrivals -->
+<!-- /new_arrivals --> 
 <div class="new_arrivals_agile_w3ls_info">
     <div class="container">
         <h3 class="wthree_text_info">New <span>Arrivals</span></h3>
         <div id="horizontalTab">
             <ul class="resp-tabs-list">
                 <li> Men's</li>
-                <li> Women's</li>
-                {{-- <li> Bags</li>
+                <li> Women's</li> 
+                {{-- <li> Bags</li> 
                 <li> Footwear</li> --}}
             </ul>
             <div class="resp-tabs-container">

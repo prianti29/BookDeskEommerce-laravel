@@ -29,9 +29,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+     
         $data["product_list"]= $this->productRepo->get();
+        // $data["category_list"]= $this->categoryRepo->get();
        
-        return view("admin.products.index",$data);
+        return view("admin.products.index",$data); 
     }
 
     /**
@@ -103,5 +105,6 @@ class ProductController extends Controller
         //dd( $data );
         return redirect('/admin/products'); 
     }
+   
     
 }

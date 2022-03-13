@@ -35,8 +35,8 @@
                             <div class="thumb-image">
                                 {{-- <a href="{{ url("/add_product/$product->id")  }}"> </a> --}}
                                 <img src="{{asset("storage/$products->featured_image")}}" data-imagezoom="true"
-                                    class="img-responsive" />
-                            </div>
+                                    class="img-responsive" />  
+                            </div>  
                         </li>
                         {{-- <li data-thumb="images/d1.jpg">
                             <div class="thumb-image"> <img src="images/d1.jpg" data-imagezoom="true"
