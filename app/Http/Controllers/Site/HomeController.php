@@ -29,6 +29,8 @@ class HomeController extends Controller
     //Single Product
     public function products($id)
     {
+        $data["category_list_men"] = Category::where('main_category_id', 0)->get();
+        $data["category_list_women"] = Category::where('main_category_id', 1)->get();  
         $data["products"] = $this->productRepo->find($id); 
         return view('site.products.single', $data);
     }

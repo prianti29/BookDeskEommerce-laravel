@@ -1,7 +1,5 @@
 @extends('site.layouts.app')
 @section('content')
-
-
 <div class="banner-bootom-w3-agileits">
     <div class="container">
         <div class="single-pro">
