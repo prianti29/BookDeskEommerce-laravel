@@ -25,7 +25,7 @@ Route::get('/checkout', [CartController::class, 'checkout']);
 
 
 
-Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class])->group(fucdnction () {
+Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/products', ProductController::class);
